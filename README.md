@@ -57,7 +57,7 @@ Ajudar usuários a descobrir quais dons espirituais são mais evidentes em suas 
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/SEU_USUARIO/meudomapp.git
+git clone https://github.com/JHarrisonR/MeuDom
 cd meudomapp
 ```
 
