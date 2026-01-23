@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:meudomapp/data/dom_enum.dart';
-import 'package:meudomapp/model/progresso_salvo.dart';
+import 'package:meudom/data/dom_enum.dart';
+import 'package:meudom/model/progresso_salvo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProgressoService {

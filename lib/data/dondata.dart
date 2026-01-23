@@ -1,4 +1,4 @@
-import 'package:meudomapp/data/dom_enum.dart';
+import 'package:meudom/data/dom_enum.dart';
 
 class DomData {
   final String nome;

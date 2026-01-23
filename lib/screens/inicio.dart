@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:meudomapp/screens/inicial1.dart';
-import 'package:meudomapp/screens/como_funciona.dart';
+import 'package:meudom/screens/inicial1.dart';
+import 'package:meudom/screens/como_funciona.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:meudomapp/screens/questoes.dart';
+import 'package:meudom/screens/questoes.dart';
 
 class Inicio extends StatefulWidget {
   const Inicio({super.key});
@@ -47,23 +47,22 @@ class _InicioState extends State<Inicio> {
               ComoFunciona(voltar: voltarPagina),
             ],
           ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
+
+          Align(
+            alignment: Alignment.bottomCenter,
             child: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 40),
-                child: Center(
-                  child: SmoothPageIndicator(
-                    controller: _controller,
-                    count: 2,
-                    effect: const WormEffect(
-                      dotHeight: 10,
-                      dotWidth: 20,
-                      dotColor: Color(0xFFCED4E3),
-                      activeDotColor: Color(0xFFF79F30),
-                    ),
+                padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).size.height * 0.05,
+                ),
+                child: SmoothPageIndicator(
+                  controller: _controller,
+                  count: 2,
+                  effect: const WormEffect(
+                    dotHeight: 10,
+                    dotWidth: 20,
+                    dotColor: Color(0xFFCED4E3),
+                    activeDotColor: Color(0xFFF79F30),
                   ),
                 ),
               ),

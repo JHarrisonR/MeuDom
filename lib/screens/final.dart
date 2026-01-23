@@ -1,9 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:meudomapp/data/dom_enum.dart';
-import 'package:meudomapp/screens/final_dom.dart';
-import 'package:meudomapp/screens/resultado.dart';
+import 'package:meudom/data/dom_enum.dart';
+import 'package:meudom/screens/final_dom.dart';
+import 'package:meudom/screens/resultado.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Final extends StatefulWidget {

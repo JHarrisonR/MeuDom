@@ -1,9 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:meudomapp/screens/questoes.dart';
-import 'package:meudomapp/services/progresso_service.dart';
-import 'package:meudomapp/widgets/botao_padrao.dart';
+import 'package:meudom/screens/questoes.dart';
+import 'package:meudom/services/progresso_service.dart';
+import 'package:meudom/widgets/botao_padrao.dart';
 
 class Inicial1 extends StatefulWidget {
   final VoidCallback nextpage;

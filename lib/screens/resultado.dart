@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:meudomapp/data/dom_enum.dart';
-import 'package:meudomapp/screens/final.dart';
-import 'package:meudomapp/services/progresso_service.dart';
-import 'package:meudomapp/services/share_service.dart';
-import 'package:meudomapp/widgets/alert_dialog.dart';
-import 'package:meudomapp/widgets/botao_padrao.dart';
-import 'package:meudomapp/widgets/popup_share.dart';
+import 'package:meudom/data/dom_enum.dart';
+import 'package:meudom/screens/final.dart';
+import 'package:meudom/services/progresso_service.dart';
+import 'package:meudom/services/share_service.dart';
+import 'package:meudom/widgets/alert_dialog.dart';
+import 'package:meudom/widgets/botao_padrao.dart';
+import 'package:meudom/widgets/popup_share.dart';
 import '/widgets/barras.dart';
-import 'package:meudomapp/screens/inicio.dart';
+import 'package:meudom/screens/inicio.dart';
 
 class Resultado extends StatefulWidget {
   final List<DomPontuacao> ranking;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meudomapp/data/dom_enum.dart';
-import 'package:meudomapp/screens/final.dart';
+import 'package:meudom/data/dom_enum.dart';
+import 'package:meudom/screens/final.dart';
 import '/widgets/barra.dart';
 
 class Barras extends StatelessWidget {

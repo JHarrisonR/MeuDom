@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:meudomapp/components/pergunta.dart';
-import 'package:meudomapp/components/respostas.dart';
-import 'package:meudomapp/data/dom_enum.dart';
-import 'package:meudomapp/data/perguntas_data.dart';
-import 'package:meudomapp/screens/finalizado.dart';
-import 'package:meudomapp/services/progresso_service.dart';
-import 'package:meudomapp/widgets/barra_progresso.dart';
-import 'package:meudomapp/widgets/pausar.dart';
+import 'package:meudom/components/pergunta.dart';
+import 'package:meudom/components/respostas.dart';
+import 'package:meudom/data/dom_enum.dart';
+import 'package:meudom/data/perguntas_data.dart';
+import 'package:meudom/screens/finalizado.dart';
+import 'package:meudom/services/progresso_service.dart';
+import 'package:meudom/widgets/barra_progresso.dart';
+import 'package:meudom/widgets/pausar.dart';
 
 class Questoes extends StatefulWidget {
   const Questoes({super.key});
@@ -109,49 +109,82 @@ class _PerguntasState extends State<Questoes> {
 
   @override
   Widget build(BuildContext context) {
-    var alturaTela = MediaQuery.of(context).size.height;
-
+    final altura = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.error,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: alturaTela > 800 ? alturaTela * 0.05 : alturaTela * 0.02,
-          ),
-          Barraprogresso(
-            valor: questaoAtual,
-            onPause: () => pausarQuestionario(context),
-          ),
-          Pergunta(questaoAtual: questaoAtual),
-          Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              Container(
-                width: double.infinity,
-                height: alturaTela > 800
-                    ? alturaTela * 0.57
-                    : alturaTela * 0.55,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.surface,
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(40),
-                    topLeft: Radius.circular(40),
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 12),
+
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.04,
+              ),
+              child: Barraprogresso(
+                valor: questaoAtual,
+                onPause: () => pausarQuestionario(context),
+              ),
+            ),
+
+            SizedBox(height: MediaQuery.of(context).size.width * 0.04),
+
+            SizedBox(
+              height: altura * 0.25,
+              child: Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.02,
                   ),
+                  child: Pergunta(questaoAtual: questaoAtual),
                 ),
               ),
-              Respostas(
-                perguntaFinal: perguntaFinal,
-                questaoAtual: questaoAtual,
-                onResponder: registrarResposta,
-                anterior: questaoAnterior,
-                finalizar: finalizarQuestionario,
-                pontuacao: pontosPorDom,
+            ),
+
+            SizedBox(height: MediaQuery.of(context).size.width * 0.04),
+
+            Expanded(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final borderRadius = constraints.maxWidth * 0.08;
+
+                  return Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      Positioned.fill(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.surface,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(borderRadius),
+                              topRight: Radius.circular(borderRadius),
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: constraints.maxWidth * 0.04,
+                          vertical: constraints.maxHeight * 0.02,
+                        ),
+                        child: Respostas(
+                          perguntaFinal: perguntaFinal,
+                          questaoAtual: questaoAtual,
+                          onResponder: registrarResposta,
+                          anterior: questaoAnterior,
+                          finalizar: finalizarQuestionario,
+                          pontuacao: pontosPorDom,
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }

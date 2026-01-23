@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meudomapp/data/dom_enum.dart';
-import 'package:meudomapp/data/dondata.dart';
+import 'package:meudom/data/dom_enum.dart';
+import 'package:meudom/data/dondata.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class FinalDom extends StatelessWidget {

@@ -9,24 +9,27 @@ class Pergunta extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final altura = MediaQuery.of(context).size.height;
-
-    return SizedBox(
-      width: altura > 800 ? 350 : 320,
-      height: altura > 800 ? altura * 0.3 : altura * 0.3,
-      child: Center(
-        child: AutoSizeText(perguntasData[questaoAtual].texto,
-            textAlign: TextAlign.center,
-            stepGranularity: 0.5,
-            style: TextStyle(
-                color: Color(0XFFFFFFFF),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: constraints.maxWidth * 0.95),
+            child: AutoSizeText(
+              perguntasData[questaoAtual].texto,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
-                height: 1.3),
-            minFontSize: altura > 800 ? 19 : 15,
-            maxFontSize: 100,
-            maxLines: 10,
-            overflow: TextOverflow.ellipsis),
-      ),
+                height: 1.3,
+              ),
+              minFontSize: 18,
+              maxFontSize: 30,
+              softWrap: true,
+            ),
+          ),
+        );
+      },
     );
   }
 }

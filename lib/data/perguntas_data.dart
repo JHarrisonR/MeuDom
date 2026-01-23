@@ -1,4 +1,4 @@
-import 'package:meudomapp/data/dom_enum.dart';
+import 'package:meudom/data/dom_enum.dart';
 
 class PerguntaData {
   final String texto;
@@ -314,7 +314,7 @@ const List<PerguntaData> perguntasData = [
   PerguntaData(
     // pergunta 51
     texto:
-        'Gosto de fazer serviços na igreja que deixar os outros satisfeitos e despreocupados (arrumar a sala, boletins preparados, conserto rede elétrica, etc.',
+        'Gosto de fazer serviços na igreja que deixam os outros satisfeitos e despreocupados (arrumar a sala, boletins preparados, conserto rede elétrica, etc.',
     dom: Dom.ajudaESocorro,
   ),
   PerguntaData(

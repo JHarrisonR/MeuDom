@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:meudomapp/data/dom_enum.dart';
-import 'package:meudomapp/screens/final.dart';
-import 'package:meudomapp/widgets/botao_padrao.dart';
+import 'package:meudom/data/dom_enum.dart';
+import 'package:meudom/screens/final.dart';
+import 'package:meudom/widgets/botao_padrao.dart';
 
 class Finalizado extends StatelessWidget {
   final Map<Dom, int> pontuacao;

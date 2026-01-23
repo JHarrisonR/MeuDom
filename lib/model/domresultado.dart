@@ -1,4 +1,4 @@
-import 'package:meudomapp/data/dondata.dart';
+import 'package:meudom/data/dondata.dart';
 
 class DomResultado {
   final DomData dom;

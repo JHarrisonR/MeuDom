@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:meudomapp/data/dom_enum.dart';
-import 'package:meudomapp/screens/finalizado.dart';
-import 'package:meudomapp/widgets/botao_resposta.dart';
-import 'package:meudomapp/widgets/botao_padrao.dart';
+import 'package:meudom/data/dom_enum.dart';
+import 'package:meudom/screens/finalizado.dart';
+import 'package:meudom/widgets/botao_resposta.dart';
+import 'package:meudom/widgets/botao_padrao.dart';
 
 class Respostas extends StatefulWidget {
   final bool perguntaFinal;
@@ -88,97 +88,106 @@ class _RespostasState extends State<Respostas> {
   Widget build(BuildContext context) {
     final altura = MediaQuery.of(context).size.height;
 
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 50),
-      child: Column(
-        children: [
-          BotaoResposta(
-            texto: opcoes[3],
-            isSelected: opcaoSelecionada == 3,
-            grupo: 1,
-            pontuacao: 3,
-            onTap: () {
-              setState(() {
-                opcaoSelecionada = 3;
-              });
-            },
-          ),
-          BotaoResposta(
-            texto: opcoes[2],
-            isSelected: opcaoSelecionada == 2,
-            grupo: 1,
-            pontuacao: 2,
-            onTap: () {
-              setState(() {
-                opcaoSelecionada = 2;
-              });
-            },
-          ),
-          BotaoResposta(
-            texto: opcoes[1],
-            isSelected: opcaoSelecionada == 1,
-            grupo: 1,
-            pontuacao: 1,
-            onTap: () {
-              setState(() {
-                opcaoSelecionada = 1;
-              });
-            },
-          ),
-          BotaoResposta(
-            texto: opcoes[0],
-            isSelected: opcaoSelecionada == 0,
-            grupo: 1,
-            pontuacao: 0,
-            onTap: () {
-              setState(() {
-                opcaoSelecionada = 0;
-              });
-            },
-          ),
-          SizedBox(height: altura > 800 ? 30 : 5),
-          Botaopadrao(
-            texto: widget.perguntaFinal ? 'FINALIZAR' : 'PRÓXIMO',
-            onPressed: opcaoSelecionada == null
-                ? () {}
-                : () {
-                    widget.onResponder(opcaoSelecionada!, context);
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
+            child: Column(
+              children: [
+                BotaoResposta(
+                  texto: opcoes[3],
+                  isSelected: opcaoSelecionada == 3,
+                  grupo: 1,
+                  pontuacao: 3,
+                  onTap: () {
                     setState(() {
-                      opcaoSelecionada = null;
+                      opcaoSelecionada = 3;
                     });
                   },
-          ),
-          if (widget.questaoAtual > 0) ...{
-            Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                      onPressed: widget.finalizar,
-                      child: Text('Finalizar'),
-                    ),
-                    TextButton(
-                      onPressed: widget.anterior,
-                      child: Row(
+                ),
+                BotaoResposta(
+                  texto: opcoes[2],
+                  isSelected: opcaoSelecionada == 2,
+                  grupo: 1,
+                  pontuacao: 2,
+                  onTap: () {
+                    setState(() {
+                      opcaoSelecionada = 2;
+                    });
+                  },
+                ),
+                BotaoResposta(
+                  texto: opcoes[1],
+                  isSelected: opcaoSelecionada == 1,
+                  grupo: 1,
+                  pontuacao: 1,
+                  onTap: () {
+                    setState(() {
+                      opcaoSelecionada = 1;
+                    });
+                  },
+                ),
+                BotaoResposta(
+                  texto: opcoes[0],
+                  isSelected: opcaoSelecionada == 0,
+                  grupo: 1,
+                  pontuacao: 0,
+                  onTap: () {
+                    setState(() {
+                      opcaoSelecionada = 0;
+                    });
+                  },
+                ),
+                SizedBox(height: altura > 800 ? 40 : 10),
+                Botaopadrao(
+                  texto: widget.perguntaFinal ? 'FINALIZAR' : 'PRÓXIMO',
+                  onPressed: opcaoSelecionada == null
+                      ? () {}
+                      : () {
+                          widget.onResponder(opcaoSelecionada!, context);
+                          setState(() {
+                            opcaoSelecionada = null;
+                          });
+                        },
+                ),
+                if (widget.questaoAtual > 0) ...{
+                  Column(
+                    children: [
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.arrow_back),
-                          SizedBox(width: 10),
-                          Text('Anterior', style: TextStyle(fontSize: 17)),
+                          // TextButton(
+                          //   onPressed: widget.finalizar,
+                          //   child: Text('Finalizar'),
+                          // ),
+                          TextButton(
+                            onPressed: widget.anterior,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(Icons.arrow_back),
+                                SizedBox(width: 10),
+                                Text(
+                                  'Anterior',
+                                  style: TextStyle(fontSize: 17),
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
+                } else ...{
+                  SizedBox(height: 50),
+                },
+                SizedBox(height: altura > 800 ? altura * 0.005 : altura * 0.02),
               ],
             ),
-          } else ...{
-            SizedBox(height: 50),
-          },
-          SizedBox(height: altura > 800 ? altura * 0.05 : altura * 0.02),
-        ],
-      ),
+          ),
+        );
+      },
     );
   }
 }

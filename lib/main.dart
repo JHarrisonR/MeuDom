@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:meudomapp/screens/inicio.dart';
+import 'package:meudom/screens/inicio.dart';
 import 'package:flutter/services.dart';
-import 'package:meudomapp/theme/app_theme.dart';
+import 'package:meudom/theme/app_theme.dart';
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
